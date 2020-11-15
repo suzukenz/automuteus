@@ -1,0 +1,14 @@
+[Unit]
+Description=AutoMuteUs
+
+[Service]
+EnvironmentFile=/opt/automuteus/.env
+ExecStart=/usr/local/bin/docker-compose -p automuteus -f /opt/automuteus/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose -p automuteus -f /opt/automuteus/docker-compose.yml down
+ExecReload=/usr/local/bin/docker-compose -p automuteus -f /opt/automuteus/docker-compose.yml restart
+Restart=always
+
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
